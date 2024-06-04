@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put, Req, UseGuards } from '@nestjs/common';
-import { BannerService } from './banner.service';
+import { BannerService } from './Banner.service';
 import { Banner } from './scehma/banner.schema';
 import { CreateBannerDto } from './dto/createbanner.dto';
 import { AuthGuard } from '@nestjs/passport';
