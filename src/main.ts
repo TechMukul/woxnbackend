@@ -6,7 +6,13 @@ import * as bodyParser from 'body-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3002', 'https://www.woxnpackagingsolution.com','https://frontend-g1ixouq08-mukul-chauhans-projects-3a9b994f.vercel.app'], // Add your production frontend URL here
+    origin: [
+      'http://localhost:3001',
+      'http://localhost:3002',
+      'https://www.woxnpackagingsolution.com',
+      'https://frontend-g1ixouq08-mukul-chauhans-projects-3a9b994f.vercel.app',
+      'https://frontend-euxa0cx4f-mukul-chauhans-projects-3a9b994f.vercel.app'
+    ],
     credentials: true, // Enable credentials (if needed)
   });
   
