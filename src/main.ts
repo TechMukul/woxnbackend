@@ -6,7 +6,7 @@ import * as bodyParser from 'body-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3002'], // Replace with your React frontend URLs
+    origin: ['http://localhost:3001', 'http://localhost:3002','www.api.woxnpackagingsolution.com'], // Replace with your React frontend URLs
     credentials: true, // Enable credentials (if needed)
   });
   
@@ -26,7 +26,7 @@ async function bootstrap() {
     next();
   });
 
-  await app.listen(3000);
+  await app.listen(process.env.start);
 }
 
 bootstrap().then(() => {
