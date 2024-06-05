@@ -6,18 +6,14 @@ import * as bodyParser from 'body-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3002','www.api.woxnpackagingsolution.com'], // Replace with your React frontend URLs
+    origin: ['http://localhost:3001', 'http://localhost:3002'], // Add your production frontend URL here
     credentials: true, // Enable credentials (if needed)
   });
   
-  // app.useGlobalPipes(new ValidationPipe());
-  // app.use(bodyParser.json({ limit: '10mb' }));
-  // app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-
   app.useGlobalPipes(new ValidationPipe());
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
-  // await app.listen(3000);
+  
   // Setting a timeout of 5 seconds for incoming requests
   app.use((req, res, next) => {
     res.setTimeout(5000, () => {
@@ -26,7 +22,7 @@ async function bootstrap() {
     next();
   });
 
-  await app.listen(process.env.start);
+  await app.listen(process.env.PORT || 3000); // Use process.env.PORT for production or default to 3000
 }
 
 bootstrap().then(() => {
