@@ -3,12 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DataModule } from './data/data.module';
+// import { DataModule } from './data/data.module';
 import { AuthModule } from './auth/auth.module';
-import { CategoryModule } from './category/category.module';
-import { CarouselModule } from './carousel/carousel.module';
-import { BannerModule } from './bannerhead/Banner.module';
+// import { CategoryModule } from './category/category.module';
+// import { CarouselModule } from './carousel/carousel.module';
+// import { BannerModule } from './bannerhead/Banner.module';
 import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
+// import { FormModule } from './form/form.module';
 
 @Module({
   imports: [
@@ -17,11 +18,12 @@ import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DB_URL),
-    DataModule,
-    CategoryModule,
+    // DataModule,
+    // CategoryModule,
     AuthModule,
-    CarouselModule,
-    BannerModule,
+    // CarouselModule,
+    // BannerModule,
+    // FormModule,
     CacheModule.register(), // Register CacheModule with default options
   ],
   controllers: [AppController],
