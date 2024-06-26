@@ -3,13 +3,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DataModule } from './data/data.module';
+// import { DataModule } from './data/data.module';
 import { AuthModule } from './auth/auth.module';
-import { CategoryModule } from './category/category.module';
-import { CarouselModule } from './carousel/carousel.module';
-import { BannerModule } from './bannerhead/Banner.module';
+// import { CategoryModule } from './category/category.module';
+// import { CarouselModule } from './carousel/carousel.module';
+// import { BannerModule } from './bannerhead/Banner.module';
 import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
+<<<<<<< HEAD
 import { FormModule } from './form/form.module';
+=======
+// import { FormModule } from './form/form.module';
+>>>>>>> 07fe394fc50851f417b5e7be81cd3d31cebfa992
 
 @Module({
   imports: [
@@ -18,12 +22,18 @@ import { FormModule } from './form/form.module';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DB_URL),
-    DataModule,
-    CategoryModule,
+    // DataModule,
+    // CategoryModule,
     AuthModule,
+<<<<<<< HEAD
     CarouselModule,
     BannerModule,
     FormModule,
+=======
+    // CarouselModule,
+    // BannerModule,
+    // FormModule,
+>>>>>>> 07fe394fc50851f417b5e7be81cd3d31cebfa992
     CacheModule.register(), // Register CacheModule with default options
   ],
   controllers: [AppController],
