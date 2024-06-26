@@ -9,6 +9,7 @@ import { CategoryModule } from './category/category.module';
 import { CarouselModule } from './carousel/carousel.module';
 import { BannerModule } from './bannerhead/Banner.module';
 import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
+import { FormModule } from './form/form.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
     AuthModule,
     CarouselModule,
     BannerModule,
+    FormModule,
     CacheModule.register(), // Register CacheModule with default options
   ],
   controllers: [AppController],
