@@ -14,9 +14,12 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
-  await app.listen(process.env.PORT || 3000);
+  await app.init(); // Initialize Nest application
+
+  return app.getHttpAdapter().getInstance(); // Return Nest application instance
 }
 
-bootstrap().then(() => {
-  console.log('Nest application is running.');
-});
+export default async function (req, res) {
+  const app = await bootstrap();
+  await app(req, res);
+}
