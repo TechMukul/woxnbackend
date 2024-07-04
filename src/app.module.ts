@@ -1,14 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DataModule } from './data/data.module';
-import { AuthModule } from './auth/auth.module';
-import { CategoryModule } from './category/category.module';
-import { CarouselModule } from './carousel/carousel.module';
-import { BannerModule } from './bannerhead/Banner.module';
-import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
+import { UserModule } from './login/user.module';
+import { HttpModule } from '@nestjs/axios';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -17,14 +11,17 @@ import { CacheModule } from '@nestjs/cache-manager'; // Correct import statement
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.DB_URL),
-    DataModule,
-    CategoryModule,
-    AuthModule,
-    CarouselModule,
-    BannerModule,
-    CacheModule.register(), // Register CacheModule with default options
+    UserModule,
+    HttpModule.registerAsync({
+      useFactory: () => ({
+        baseURL: 'http://localhost:3000',
+        headers: {
+          'Access-Control-Allow-Origin': 'http://localhost:3001', // Corrected CORS origin
+        },
+      }),
+    }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
